@@ -1,0 +1,22 @@
+{
+    "name": "agitation/cldr-bundle",
+    "type": "symfony-bundle",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.9",
+        "symfony/symfony": "2.8.*",
+        "agitation/base-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Agit\\CldrBundle\\": "lib/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Günsche",
+            "homepage": "http://www.agitsol.com/"
+        }
+    ]
+}

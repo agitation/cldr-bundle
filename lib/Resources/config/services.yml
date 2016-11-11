@@ -1,0 +1,33 @@
+services:
+    agit.localedata.adapter.abstract:
+        abstract: true
+        calls:
+            - [setCldrDir, ["Resources/cldr"]]
+
+    agit.localedata.adapter.countrycurrency:
+        parent: agit.localedata.adapter.abstract
+        class: Agit\CldrBundle\Adapter\CountryCurrencyAdapter
+
+    agit.localedata.adapter.currency:
+        parent: agit.localedata.adapter.abstract
+        class: Agit\CldrBundle\Adapter\CurrencyAdapter
+        arguments: [ "@agit.localedata.adapter.countrycurrency" ]
+
+    agit.localedata.adapter.country:
+        parent: agit.localedata.adapter.abstract
+        class: Agit\CldrBundle\Adapter\CountryAdapter
+        arguments: [ "@agit.localedata.adapter.currency", "@agit.localedata.adapter.countrycurrency" ]
+
+    agit.localedata.adapter.language:
+        parent: agit.localedata.adapter.abstract
+        class: Agit\CldrBundle\Adapter\LanguageAdapter
+        arguments: [ "@agit.localedata.adapter.country" ]
+
+    agit.localedata.adapter.time:
+        parent: agit.localedata.adapter.abstract
+        class: Agit\CldrBundle\Adapter\TimeAdapter
+
+    agit.localedata.adapter.timezone:
+        parent: agit.localedata.adapter.abstract
+        class: Agit\CldrBundle\Adapter\TimezoneAdapter
+        arguments: [ "@agit.localedata.adapter.country" ]
