@@ -60,7 +60,7 @@ abstract class AbstractAdapter
     {
         if (! isset($this->dataCache[$path])) {
             if (! is_readable($path)) {
-                throw new InternalErrorException("Cannot read "$path".");
+                throw new InternalErrorException("Cannot read `$path`.");
             }
 
             $this->dataCache[$path] = json_decode(file_get_contents($path), true);
