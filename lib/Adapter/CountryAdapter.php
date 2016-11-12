@@ -30,7 +30,7 @@ class CountryAdapter extends AbstractAdapter
         $countries = $this->getMainData($this->baseLocDir, "territories.json");
         $codeMappings = $this->getSupplementalData("codeMappings.json");
         $phoneCodes = $this->getSupplementalData("telephoneCodeData.json");
-        $currencies = $this->currencyAdapter->getCurrencies();
+        $currencies = $this->currencyAdapter->getCurrencies($defaultLocale, $availableLocales);
         $currencyMappings = $this->countryCurrencyAdapter->getCountryCurrencyMap();
 
         // collect main data ...

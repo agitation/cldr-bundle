@@ -27,6 +27,12 @@ class LanguageAdapter extends AbstractAdapter
         $result = [];
         $territories = $this->getSupplementalData("territoryInfo.json");
 
+        $countries = [];
+
+        foreach ($this->countryAdapter->getCountries($defaultLocale, $availableLocales) as $country) {
+            $countries[$country->getCode()] = $country;
+        }
+
         foreach ($territories["supplemental"]["territoryInfo"] as $countryCode => $data) {
             if (strlen($countryCode) !== 2 || is_numeric($countryCode) || $countryCode === "ZZ" || ! isset($data["languagePopulation"])) {
                 continue;
@@ -39,7 +45,7 @@ class LanguageAdapter extends AbstractAdapter
                     ! isset($langData["_populationPercent"]) ||
                     $langData["_officialStatus"] !== "official" ||
                     $langData["_populationPercent"] < 1 ||
-                    ! $this->countryAdapter->hasCountry($countryCode)
+                    ! isset($countries[$countryCode])
                 ) {
                     continue;
                 }
@@ -90,7 +96,7 @@ class LanguageAdapter extends AbstractAdapter
             }
 
             foreach ($this->languageCountryMap[$langCode] as $countryCode) {
-                $language->addCountry($this->countryAdapter->getCountry($countryCode));
+                $language->addCountry($countries[$countryCode]);
             }
         }
 

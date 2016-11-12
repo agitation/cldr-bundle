@@ -32,7 +32,7 @@ class TimezoneAdapter extends AbstractAdapter
             $allTimezones = array_merge($allTimezones, $this->getCodesFromSublist($continent, $list));
         }
 
-        $countries = $this->countryAdapter->getCountries();
+        $countries = $this->countryAdapter->getCountries($defaultLocale, $availableLocales);
 
         foreach ($allTimezones as $tzName => $tzCity) {
             if (isset($supportedTimezones[$tzName])) {
