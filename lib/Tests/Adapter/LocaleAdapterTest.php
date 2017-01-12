@@ -24,7 +24,7 @@ class LocaleAdapterTest extends AbstractAdapterTest
         $this->assertTrue(is_array($locales));
         $this->assertArrayHasKey($code, $locales);
         $this->assertSame($code, $locales[$code]->getCode());
-        $this->assertSame($nameEn, $locales[$code]->getName('en_GB'));
+        $this->assertSame($nameEn, $locales[$code]->getName('en_US'));
         $this->assertSame($nameDe, $locales[$code]->getName('de_DE'));
     }
 
@@ -37,7 +37,7 @@ class LocaleAdapterTest extends AbstractAdapterTest
         $locale = $localeAdapter->getLocale($code);
         $this->assertTrue(is_object($locale));
         $this->assertSame('Agit\CldrBundle\Adapter\Object\Locale', get_class($locale));
-        $this->assertSame($nameEn, $locale->getName('en_GB'));
+        $this->assertSame($nameEn, $locale->getName('en_US'));
         $this->assertSame($nameDe, $locale->getName('de_DE'));
     }
 
@@ -54,7 +54,7 @@ class LocaleAdapterTest extends AbstractAdapterTest
     {
         return [
             ['de_DE', 'German', 'Deutsch'],
-            ['en_GB', 'English', 'Englisch']
+            ['en_US', 'English', 'Englisch']
         ];
     }
 }

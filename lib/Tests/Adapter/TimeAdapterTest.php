@@ -24,7 +24,7 @@ class TimeAdapterTest extends AbstractAdapterTest
         $this->assertTrue(is_array($months));
         $this->assertArrayHasKey($code, $months);
         $this->assertSame($code, $months[$code]->getCode());
-        $this->assertSame($nameEn, $months[$code]->getName('en_GB'));
+        $this->assertSame($nameEn, $months[$code]->getName('en_US'));
         $this->assertSame($nameDe, $months[$code]->getName('de_DE'));
     }
 
@@ -37,7 +37,7 @@ class TimeAdapterTest extends AbstractAdapterTest
         $month = $timeAdapter->getMonth($code);
         $this->assertTrue(is_object($month));
         $this->assertSame('Agit\CldrBundle\Adapter\Object\Month', get_class($month));
-        $this->assertSame($nameEn, $month->getName('en_GB'));
+        $this->assertSame($nameEn, $month->getName('en_US'));
         $this->assertSame($nameDe, $month->getName('de_DE'));
     }
 
@@ -52,7 +52,7 @@ class TimeAdapterTest extends AbstractAdapterTest
         $this->assertTrue(is_array($weekdays));
         $this->assertArrayHasKey($code, $weekdays);
         $this->assertSame($code, $weekdays[$code]->getCode());
-        $this->assertSame($nameEn, $weekdays[$code]->getName('en_GB'));
+        $this->assertSame($nameEn, $weekdays[$code]->getName('en_US'));
         $this->assertSame($nameDe, $weekdays[$code]->getName('de_DE'));
     }
 
@@ -65,7 +65,7 @@ class TimeAdapterTest extends AbstractAdapterTest
         $weekday = $timeAdapter->getWeekday($code);
         $this->assertTrue(is_object($weekday));
         $this->assertSame('Agit\CldrBundle\Adapter\Object\Weekday', get_class($weekday));
-        $this->assertSame($nameEn, $weekday->getName('en_GB'));
+        $this->assertSame($nameEn, $weekday->getName('en_US'));
         $this->assertSame($nameDe, $weekday->getName('de_DE'));
     }
 

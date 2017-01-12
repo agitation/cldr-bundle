@@ -24,7 +24,7 @@ class CurrencyAdapterTest extends AbstractAdapterTest
         $this->assertTrue(is_array($currencies));
         $this->assertArrayHasKey($code, $currencies);
         $this->assertSame($code, $currencies[$code]->getCode());
-        $this->assertSame($nameEn, $currencies[$code]->getName('en_GB'));
+        $this->assertSame($nameEn, $currencies[$code]->getName('en_US'));
         $this->assertSame($nameDe, $currencies[$code]->getName('de_DE'));
     }
 
@@ -37,7 +37,7 @@ class CurrencyAdapterTest extends AbstractAdapterTest
         $currency = $currencyAdapter->getCurrency($code);
         $this->assertTrue(is_object($currency));
         $this->assertSame('Agit\CldrBundle\Adapter\Object\Currency', get_class($currency));
-        $this->assertSame($nameEn, $currency->getName('en_GB'));
+        $this->assertSame($nameEn, $currency->getName('en_US'));
         $this->assertSame($nameDe, $currency->getName('de_DE'));
     }
 

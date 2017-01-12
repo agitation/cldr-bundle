@@ -37,11 +37,11 @@ abstract class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
 
         $localeService->expects($this->any())
             ->method('getDefaultLocale')
-            ->will($this->returnValue('en_GB'));
+            ->will($this->returnValue('en_US'));
 
         $localeService->expects($this->any())
             ->method('getAvailableLocales')
-            ->will($this->returnValue(['en_GB', 'de_DE']));
+            ->will($this->returnValue(['en_US', 'de_DE']));
 
         return $localeService;
     }
@@ -95,7 +95,7 @@ abstract class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
     protected function mockCurrency($code, $nameEn, $nameDe)
     {
         $currency = new Currency($code);
-        $currency->addName('en_GB', $nameEn);
+        $currency->addName('en_US', $nameEn);
         $currency->addName('de_DE', $nameDe);
 
         return $currency;
@@ -136,7 +136,7 @@ abstract class AbstractAdapterTest extends \PHPUnit_Framework_TestCase
     protected function mockCountry($code, $nameEn, $nameDe, $currCode, $currNameEn, $currNameDe)
     {
         $country = new Country($code, $this->mockCurrency($currCode, $currNameEn, $currNameDe));
-        $country->addName('en_GB', $nameEn);
+        $country->addName('en_US', $nameEn);
         $country->addName('de_DE', $nameDe);
 
         return $country;

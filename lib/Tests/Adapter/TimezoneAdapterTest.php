@@ -24,7 +24,7 @@ class TimezoneAdapterTest extends AbstractAdapterTest
         $this->assertTrue(is_array($timezones));
         $this->assertArrayHasKey($code, $timezones);
         $this->assertSame($code, $timezones[$code]->getCode());
-        $this->assertSame($nameEn, $timezones[$code]->getName('en_GB'));
+        $this->assertSame($nameEn, $timezones[$code]->getName('en_US'));
         $this->assertSame($nameDe, $timezones[$code]->getName('de_DE'));
     }
 
@@ -37,7 +37,7 @@ class TimezoneAdapterTest extends AbstractAdapterTest
         $timezone = $timezoneAdapter->getTimezone($code);
         $this->assertTrue(is_object($timezone));
         $this->assertSame('Agit\CldrBundle\Adapter\Object\Timezone', get_class($timezone));
-        $this->assertSame($nameEn, $timezone->getName('en_GB'));
+        $this->assertSame($nameEn, $timezone->getName('en_US'));
         $this->assertSame($nameDe, $timezone->getName('de_DE'));
     }
 

@@ -24,7 +24,7 @@ class CountryAdapterTest extends AbstractAdapterTest
         $this->assertTrue(is_array($countries));
         $this->assertArrayHasKey($code, $countries);
         $this->assertSame($code, $countries[$code]->getCode());
-        $this->assertSame($nameEn, $countries[$code]->getName('en_GB'));
+        $this->assertSame($nameEn, $countries[$code]->getName('en_US'));
         $this->assertSame($nameDe, $countries[$code]->getName('de_DE'));
     }
 
@@ -37,7 +37,7 @@ class CountryAdapterTest extends AbstractAdapterTest
         $country = $countryAdapter->getCountry($code);
         $this->assertTrue(is_object($country));
         $this->assertSame('Agit\CldrBundle\Adapter\Object\Country', get_class($country));
-        $this->assertSame($nameEn, $country->getName('en_GB'));
+        $this->assertSame($nameEn, $country->getName('en_US'));
         $this->assertSame($nameDe, $country->getName('de_DE'));
     }
 
