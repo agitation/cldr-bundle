@@ -9,16 +9,19 @@
 
 namespace Agit\CldrBundle\Adapter;
 
+use Agit\CldrBundle\Adapter\Object\Month;
+use Agit\CldrBundle\Adapter\Object\Weekday;
+
 class TimeAdapter extends AbstractAdapter
 {
     public function getMonths($defaultLocale, array $availableLocales)
     {
-        return $this->get("months", __NAMESPACE__ . "Object\\Month", $defaultLocale, $availableLocales);
+        return $this->get("months", Month::class, $defaultLocale, $availableLocales);
     }
 
     public function getWeekdays($defaultLocale, array $availableLocales)
     {
-        return $this->get("days", __NAMESPACE__ . "Object\\Weekday", $defaultLocale, $availableLocales);
+        return $this->get("days", Weekday::class, $defaultLocale, $availableLocales);
     }
 
     protected function get($type, $class, $defaultLocale, array $availableLocales)
