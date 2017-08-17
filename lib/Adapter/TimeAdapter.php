@@ -32,7 +32,7 @@ class TimeAdapter extends AbstractAdapter
         $dataNode = $data["main"][$this->baseLocDir]["dates"]["calendars"]["gregorian"];
 
         foreach ($dataNode[$type]["stand-alone"]["wide"] as $id => $name) {
-            $this->months[$id] = new $class($id);
+            $result[$id] = new $class($id);
             $result[$id]->addName($defaultLocale, $name, $dataNode[$type]["stand-alone"]["abbreviated"][$id]);
         }
 
