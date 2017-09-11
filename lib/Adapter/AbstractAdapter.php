@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -15,7 +15,7 @@ abstract class AbstractAdapter
 {
     protected $cldrDir;
 
-    protected $baseLocDir = "en-GB";
+    protected $baseLocDir = 'en-GB';
 
     // cache for raw retrieved data
     protected $dataCache = [];
@@ -27,7 +27,7 @@ abstract class AbstractAdapter
 
     protected function getMainData($locDir, $filename)
     {
-        $path = sprintf("%s/main/%s/%s", $this->cldrDir, $locDir ?: $this->baseLocDir, $filename);
+        $path = sprintf('%s/main/%s/%s', $this->cldrDir, $locDir ?: $this->baseLocDir, $filename);
 
         return $this->getData($path);
     }
@@ -35,13 +35,16 @@ abstract class AbstractAdapter
     protected function findLocDirForLocale($locale)
     {
         $locDir = null;
-        $variants = [str_replace("_", "-", $locale), substr($locale, 0, 2)];
+        $variants = [str_replace('_', '-', $locale), substr($locale, 0, 2)];
 
-        foreach ($variants as $variant) {
-            $path = sprintf("%s/main/%s", $this->cldrDir, $variant);
+        foreach ($variants as $variant)
+        {
+            $path = sprintf('%s/main/%s', $this->cldrDir, $variant);
 
-            if (is_dir($path)) {
+            if (is_dir($path))
+            {
                 $locDir = $variant;
+
                 break;
             }
         }
@@ -51,15 +54,17 @@ abstract class AbstractAdapter
 
     protected function getSupplementalData($filename)
     {
-        $path = sprintf("%s/supplemental/%s", $this->cldrDir, $filename);
+        $path = sprintf('%s/supplemental/%s', $this->cldrDir, $filename);
 
         return $this->getData($path);
     }
 
     private function getData($path)
     {
-        if (! isset($this->dataCache[$path])) {
-            if (! is_readable($path)) {
+        if (! isset($this->dataCache[$path]))
+        {
+            if (! is_readable($path))
+            {
                 throw new InternalErrorException("Cannot read `$path`.");
             }
 

@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -15,6 +15,8 @@ class CountryCurrencyAdapterTest extends AbstractAdapterTest
 {
     /**
      * @dataProvider providerGetCountryCurrencyMap
+     * @param mixed $countryCode
+     * @param mixed $currencyCode
      */
     public function testGetCountryCurrencyMap($countryCode, $currencyCode)
     {

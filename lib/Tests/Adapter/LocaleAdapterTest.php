@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -15,6 +15,9 @@ class LocaleAdapterTest extends AbstractAdapterTest
 {
     /**
      * @dataProvider providerLocales
+     * @param mixed $code
+     * @param mixed $nameEn
+     * @param mixed $nameDe
      */
     public function testGetLocales($code, $nameEn, $nameDe)
     {
@@ -30,6 +33,9 @@ class LocaleAdapterTest extends AbstractAdapterTest
 
     /**
      * @dataProvider providerLocales
+     * @param mixed $code
+     * @param mixed $nameEn
+     * @param mixed $nameDe
      */
     public function testGetLocale($code, $nameEn, $nameDe)
     {

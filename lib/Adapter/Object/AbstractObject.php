@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -28,8 +28,9 @@ abstract class AbstractObject
 
     public function addName($locale, $name, $abbr = null)
     {
-        if (static::$hasAbbr && ! is_string($abbr)) {
-            throw new InternalErrorException(sprintf("Object type %s needs an abbreviation.", get_class()));
+        if (static::$hasAbbr && ! is_string($abbr))
+        {
+            throw new InternalErrorException(sprintf('Object type %s needs an abbreviation.', get_class()));
         }
 
         $this->names[$locale] = (string) $name;
@@ -48,7 +49,8 @@ abstract class AbstractObject
 
     public function getName($locale)
     {
-        if (! isset($this->names[$locale])) {
+        if (! isset($this->names[$locale]))
+        {
             throw new InternalErrorException("No name was found for locale '$locale'.");
         }
 
@@ -57,11 +59,13 @@ abstract class AbstractObject
 
     public function getAbbr($locale)
     {
-        if (! static::$hasAbbr) {
+        if (! static::$hasAbbr)
+        {
             throw new InternalErrorException(sprintf("Object type %s doesn't support abbreviations.", get_class()));
         }
 
-        if (! isset($this->abbrs[$locale])) {
+        if (! isset($this->abbrs[$locale]))
+        {
             throw new InternalErrorException("No abbreviation was found for locale '$locale'.");
         }
 

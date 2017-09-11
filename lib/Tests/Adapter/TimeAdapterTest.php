@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -15,6 +15,9 @@ class TimeAdapterTest extends AbstractAdapterTest
 {
     /**
      * @dataProvider providerMonths
+     * @param mixed $code
+     * @param mixed $nameEn
+     * @param mixed $nameDe
      */
     public function testGetMonths($code, $nameEn, $nameDe)
     {
@@ -30,6 +33,9 @@ class TimeAdapterTest extends AbstractAdapterTest
 
     /**
      * @dataProvider providerMonths
+     * @param mixed $code
+     * @param mixed $nameEn
+     * @param mixed $nameDe
      */
     public function testGetMonth($code, $nameEn, $nameDe)
     {
@@ -43,6 +49,9 @@ class TimeAdapterTest extends AbstractAdapterTest
 
     /**
      * @dataProvider providerWeekdays
+     * @param mixed $code
+     * @param mixed $nameEn
+     * @param mixed $nameDe
      */
     public function testGetWeekdays($code, $nameEn, $nameDe)
     {
@@ -58,6 +67,9 @@ class TimeAdapterTest extends AbstractAdapterTest
 
     /**
      * @dataProvider providerWeekdays
+     * @param mixed $code
+     * @param mixed $nameEn
+     * @param mixed $nameDe
      */
     public function testGetWeekday($code, $nameEn, $nameDe)
     {
