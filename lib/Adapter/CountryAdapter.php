@@ -37,7 +37,7 @@ class CountryAdapter extends AbstractAdapter
         foreach ($countries['main'][$this->baseLocDir]['localeDisplayNames']['territories'] as $code => $name)
         {
             if (
-                strlen($code) === 2 &&
+                strlen((string)$code) === 2 &&
                 ! is_numeric($code) &&
                 $code !== 'ZZ' &&
                 isset($currencyMappings[$code]) &&

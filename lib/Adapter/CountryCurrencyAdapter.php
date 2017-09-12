@@ -22,7 +22,7 @@ class CountryCurrencyAdapter extends AbstractAdapter
 
         foreach ($currencyMappings['supplemental']['currencyData']['region'] as $country => $list)
         {
-            if (strlen($country) !== 2 || is_numeric($country) || in_array($country, $this->countryBlacklist))
+            if (strlen((string)$country) !== 2 || is_numeric($country) || in_array($country, $this->countryBlacklist))
             {
                 continue;
             }
