@@ -23,15 +23,22 @@ class CurrencyAdapter extends AbstractAdapter
     public function getCurrencies($defaultLocale, array $availableLocales)
     {
         $result = [];
-        $currencyData = $this->getMainData($this->baseLocDir, 'currencies.json');
+        $currencyData = $this->getSupplementalData('currencyData.json');
+        $currencies = $this->getMainData($this->baseLocDir, 'currencies.json');
         $currencyMappings = array_flip($this->countryCurrencyAdapter->getCountryCurrencyMap());
 
         // collect main data ...
-        foreach ($currencyData['main'][$this->baseLocDir]['numbers']['currencies'] as $code => $list)
+        foreach ($currencies['main'][$this->baseLocDir]['numbers']['currencies'] as $code => $list)
         {
+            $digits = 2;
+
+            if (isset($currencyData["supplemental"]["currencyData"]["fractions"][$code]["_digits"]))
+                $digits = (int)$currencyData["supplemental"]["currencyData"]["fractions"][$code]["_digits"];
+
             if (isset($currencyMappings[$code]))
             {
-                $result[$code] = new Currency($code);
+                $symbol = isset($list["symbol-alt-narrow"]) ? $list["symbol-alt-narrow"] : $list["symbol"];
+                $result[$code] = new Currency($code, $symbol, $digits);
                 $result[$code]->addName($defaultLocale, $list['displayName']);
             }
         }
