@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -30,7 +31,7 @@ abstract class AbstractObject
     {
         if (static::$hasAbbr && ! is_string($abbr))
         {
-            throw new InternalErrorException(sprintf('Object type %s needs an abbreviation.', get_class()));
+            throw new InternalErrorException(sprintf('Object type %s needs an abbreviation.', __CLASS__));
         }
 
         $this->names[$locale] = (string) $name;
@@ -61,7 +62,7 @@ abstract class AbstractObject
     {
         if (! static::$hasAbbr)
         {
-            throw new InternalErrorException(sprintf("Object type %s doesn't support abbreviations.", get_class()));
+            throw new InternalErrorException(sprintf("Object type %s doesn't support abbreviations.", __CLASS__));
         }
 
         if (! isset($this->abbrs[$locale]))

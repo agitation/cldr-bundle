@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /*
  * @package    agitation/cldr-bundle
  * @link       http://github.com/agitation/cldr-bundle
@@ -32,12 +33,14 @@ class CurrencyAdapter extends AbstractAdapter
         {
             $digits = 2;
 
-            if (isset($currencyData["supplemental"]["currencyData"]["fractions"][$code]["_digits"]))
-                $digits = (int)$currencyData["supplemental"]["currencyData"]["fractions"][$code]["_digits"];
+            if (isset($currencyData['supplemental']['currencyData']['fractions'][$code]['_digits']))
+            {
+                $digits = (int)$currencyData['supplemental']['currencyData']['fractions'][$code]['_digits'];
+            }
 
             if (isset($currencyMappings[$code]))
             {
-                $symbol = isset($list["symbol-alt-narrow"]) ? $list["symbol-alt-narrow"] : $list["symbol"];
+                $symbol = $list['symbol-alt-narrow'] ?? $list['symbol'];
                 $result[$code] = new Currency($code, $symbol, $digits);
                 $result[$code]->addName($defaultLocale, $list['displayName']);
             }
